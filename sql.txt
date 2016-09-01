@@ -1,0 +1,144 @@
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `ad_banner`
+-- 
+
+CREATE TABLE `ad_banner` (
+  `bannerID` int(11) NOT NULL auto_increment,
+  `bannerImage` varchar(255) NOT NULL default '',
+  PRIMARY KEY  (`bannerID`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+-- 
+-- Dumping data for table `ad_banner`
+-- 
+
+INSERT INTO `ad_banner` VALUES (1, '1_b2.gif');
+INSERT INTO `ad_banner` VALUES (2, '2_b1.gif');
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `ad_links`
+-- 
+
+CREATE TABLE `ad_links` (
+  `linkID` int(11) NOT NULL auto_increment,
+  `linkTitle` varchar(255) NOT NULL default '',
+  PRIMARY KEY  (`linkID`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+-- 
+-- Dumping data for table `ad_links`
+-- 
+
+INSERT INTO `ad_links` VALUES (1, 'Help us! Bid now');
+INSERT INTO `ad_links` VALUES (2, 'DollarLinking Details');
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `admin_users`
+-- 
+
+CREATE TABLE `admin_users` (
+  `adminUsrID` int(11) NOT NULL auto_increment,
+  `adminUsrName` varchar(150) NOT NULL default '',
+  `adminUsrPswd` varchar(150) NOT NULL default '',
+  `adminUsrEmail` varchar(200) NOT NULL default '',
+  PRIMARY KEY  (`adminUsrID`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+-- 
+-- Dumping data for table `admin_users`
+-- 
+
+INSERT INTO `admin_users` VALUES (1, 'admin', 'admin', 'test@test.com');
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `adminmenu`
+-- 
+
+CREATE TABLE `adminmenu` (
+  `menuID` int(11) NOT NULL auto_increment,
+  `menuName` varchar(150) NOT NULL default '',
+  `fileName` varchar(200) NOT NULL default '',
+  `menuOrder` int(11) NOT NULL default '0',
+  PRIMARY KEY  (`menuID`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+
+-- 
+-- Dumping data for table `adminmenu`
+-- 
+
+INSERT INTO `adminmenu` VALUES (1, 'Manage Listing', 'listing.php', 1);
+INSERT INTO `adminmenu` VALUES (2, 'Admin Profile', 'adminUser.php', 12);
+INSERT INTO `adminmenu` VALUES (3, 'Logout', 'logout.php', 13);
+INSERT INTO `adminmenu` VALUES (4, 'Manage Ad Links', 'ad_links.php', 2);
+INSERT INTO `adminmenu` VALUES (5, 'Manage Banner Ad', 'banner.php', 3);
+INSERT INTO `adminmenu` VALUES (6, 'Manage Pages', 'files.php', 4);
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `cmsfiles`
+-- 
+
+CREATE TABLE `cmsfiles` (
+  `file_id` int(11) NOT NULL auto_increment,
+  `filename` varchar(50) NOT NULL default '',
+  `title` varchar(150) NOT NULL default '',
+  `meta_keywords` text NOT NULL,
+  `meta_desc` text NOT NULL,
+  `content` text NOT NULL,
+  `createdOn` datetime NOT NULL default '0000-00-00 00:00:00',
+  PRIMARY KEY  (`file_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+
+-- 
+-- Dumping data for table `cmsfiles`
+-- 
+
+INSERT INTO `cmsfiles` VALUES (1, 'buy_link.php', 'Buy A Link', 'meta keywords', 'buy a link', '<table width=\\"100%\\" cellspacing=\\"0\\" cellpadding=\\"0\\" border=\\"0\\" class=\\"glow border: 1px dashed #BBBBBB border: 1px dashed #BBBBBB\\"><tr><td><table width=\\"100%\\" cellspacing=\\"5\\" cellpadding=\\"5\\" border=\\"0\\"><tr><td width=\\"306\\"><font style=\\"font-size: 8pt;\\"><strong>Thank you for choosing to buy a Link<br /></strong><br />To buy a link, please complete the form below. Once you have completed the form, your listing will be added but will not be activated. To activate your listing, you will need to complete the payment of your bid amount via PayPal.</font></td><td><p align=\\"center\\"><strong><font color=\\"#003366\\" style=\\"font-size: 8pt;\\">Payments by</font></strong><br /><img border=\\"0\\" src=\\"../cmtimages/pp.gif\\" /></p></td></tr></table></td></tr></table>', '2006-12-21 00:00:00');
+INSERT INTO `cmsfiles` VALUES (2, 'terms.php', 'Terms of Use 22', 'Terms of Use 22', 'Terms of Use 22 ', '<table width=\\"100%\\" height=\\"25\\" cellspacing=\\"0\\" cellpadding=\\"0\\" border=\\"0\\" class=\\"glow border: 1px dashed #BBBBBB\\"><tr><td><table width=\\"100%\\" cellspacing=\\"5\\" cellpadding=\\"5\\" border=\\"0\\"><tr><td><span style=\\"font-size: 8pt;\\">Edit * To buy a link, you must agree with the terms and conditions below.</span> </td></tr></table></td></tr></table>', '2006-12-19 00:00:00');
+INSERT INTO `cmsfiles` VALUES (3, 'contact.php', 'contact us', 'sss', 'sssaaa', '<table class=\\"glow border: 1px dashed #BBBBBB\\" height=\\"25\\" cellspacing=\\"0\\" cellpadding=\\"0\\" width=\\"100%\\" border=\\"0\\"><tr><td><table cellspacing=\\"5\\" cellpadding=\\"5\\" width=\\"100%\\" border=\\"0\\"><tr><td><span style=\\"font-size: 8pt\\"><strong>Thank you for considering DollarLinking.<br /></strong><br />To contact us, please complete the form below. Please note, due to the demand in support we are not able to reply to every question we receive.</span> </td></tr></table></td></tr></table>HELLO', '2006-12-19 00:00:00');
+INSERT INTO `cmsfiles` VALUES (4, 'about.php', 'dsf', 'dsf', 'dsfgs', '<table class=\\"glow border: 1px dashed #BBBBBB\\" height=\\"25\\" cellspacing=\\"0\\" cellpadding=\\"0\\" width=\\"100%\\" border=\\"0\\"><tr><td><font size=\\"2\\">&nbsp;</font><span style=\\"font-size: 8pt\\">If you have any questions, please contact us.</span> </td></tr></table>', '2006-12-19 00:00:00');
+INSERT INTO `cmsfiles` VALUES (5, 'thanks.php', 'Thanks After Payment', 'Thanks After Payment', 'Thanks After Payment', 'Thanks After Payment', '2007-02-21 00:00:00');
+INSERT INTO `cmsfiles` VALUES (6, 'cancel.php', 'Cancel Due to non payment at paypal', 'Cancel Due to non payment at paypal', 'Cancel Due to non payment at paypal', 'Cancel Due to non payment at paypal', '2007-02-21 00:00:00');
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `listing`
+-- 
+
+CREATE TABLE `listing` (
+  `listID` int(11) NOT NULL auto_increment,
+  `email` varchar(255) NOT NULL default '',
+  `title` varchar(150) NOT NULL default '',
+  `description_1` varchar(255) NOT NULL default '',
+  `description_2` varchar(255) NOT NULL default '',
+  `currentBid` float NOT NULL default '0',
+  `siteUrl` varchar(255) NOT NULL default '',
+  `lastBidOn` date NOT NULL default '0000-00-00',
+  `createdOn` date NOT NULL default '0000-00-00',
+  `listStatus` char(1) NOT NULL default '0',
+  PRIMARY KEY  (`listID`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=25 ;
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `tempTable`
+-- 
+
+CREATE TABLE `tempTable` (
+  `session_id` varchar(255) NOT NULL default '',
+  `transactionKey` varchar(255) NOT NULL default '',
+  `listID` int(11) NOT NULL default '0',
+  `bidToadd` float NOT NULL default '0',
+  `datedOn` int(20) NOT NULL default '0'
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;

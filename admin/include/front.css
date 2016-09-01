@@ -1,0 +1,63 @@
+td.mbg { text-align:center; font-size:15pt; color:#ffffff; width:47; height:50; background-color:#BF1F1F;}
+td.mbg:hover,.mbghover { text-align:center; font-size:15pt; color:#ff0000; width:47; height:50; background-color:#9B1919; cursor:pointer; }
+font, td, p, a, body, td, table { font-family: Tahoma, Arial, Verdana; }
+a:link,a:hover { color:#000000; text-decoration: underline;  }
+a:visited,a:visited:hover { color:#000000; text-decoration: underline; }
+
+a.nav,a.nav:visited,a.nav:visited:hover,a.nav:hover {font-size: 15pt; color:#ffffff; text-decoration: none; }
+a.link,a.link:visited { font-size: 14pt; color:#1A1A1A; }
+a.link:visited:hover,a.link:hover { font-size: 14pt; color:#ffffff; background-color:#2D2D2D; }
+
+td.navbar:hover { background-color:#383838; cursor:pointer; }
+td.navbarhover { background-color:#383838; cursor:pointer; }
+
+a.navs,a.navs:visited,a.navs:visited:hover,a.navs:hover { font-size: 8pt; font-weight:bold; color:#FFFFFF; text-decoration: none; }
+td.mbgs { text-align:center; font-weight:bold; font-size:8pt; color:#ffffff; width:15; height:20; background-color:#BF1F1F;}
+td.mbgs:hover,.mbgshover { text-align:center; font-weight:bold; font-size:8pt; color:#ffffff;  width:15; height:20; background-color:#9B1919; cursor:pointer; }
+
+td.cb { width:52px; padding-top:4px; text-align:center; font-weight:bold; font-size:8pt; color:#ffffff; background:url(img/cb.gif);}
+td.cb:hover,.cbhover { width:52px; padding-top:4px; font-weight:bold; text-align:center; font-size:8pt; color:#ffffff; background:url(img/cbh.gif); cursor:pointer; }
+
+.smallnav:hover,.smallnav:visited:hover { background-color:#383838; color:#ffffff; }
+a.smallnavwhite,a.smallnavwhite:hover,a.smallnavwhite:visited:hover { background-color:#383838; color:#ffffff; }
+
+.glow { border: 1px solid #FF9900; background-color:#FFFAE6; }
+
+form { margin-bottom: 0px; }
+
+.rr1 {background:url(img/dot.gif) 100% 100% no-repeat; }
+.rr2 {background:url(img/dot.gif) 0 0 no-repeat; }
+.rr3 {background:url(img/dot.gif) 100% 0 no-repeat; }
+.rr4 {background:url(img/dot.gif) 0 100% no-repeat; }
+
+img {border:0}
+
+input.button { font: 14px arial,helvetica,sans-serif; font-weight: bold; padding: 3px 7px; _padding: 3px; }
+
+.rowTable{ border-collapse: collapse; border:1px solid #ffffff; background-color:#ffffff;}
+.rowAlternateTable{ border-collapse: collapse; border:1px solid #f7f7f7; background-color:#f7f7f7;}
+
+.headerText{ color:#950000; font-size: 30pt;}
+.headerTagText{ font-size: 8pt; color:#333333;}
+
+.searchBox{ border:2px solid #9A1818; font-size:11pt; height:25; color:#333333; padding-left:2px; padding-right:2px; padding-top:2px; width:148; background-image:url('img/s.gif');}
+
+.menuTable{ border:1px solid #FFFFFF; border-collapse: collapse;}
+.menuPageBottomLinks{ font-size:8pt;}
+
+.submenuTable{ BORDER-COLLAPSE: collapse; border:1px solid #ffffff; background-color:#cc2800;}
+.submenuBottomTable{ background-color:#333333; }
+.submenuBottomTableLeftHeading{ color:#ffffff; font-size:18px; font-weight:bold; }
+.submenuBottomLinks{FONT-SIZE: 8pt; COLOR:#ffffff; }
+
+.listingMainTable{ border-collapse: collapse;}
+.Top5{font-size:18px; color:#950000;}
+
+hr{ noshade; color:#808080; height:1px;}
+
+.listingDesc{color:#808080;font-size: 8pt;}
+.currentBid{color:#FFFFFF;font-size: 8pt; font-weight:bold;}
+.displayText{ FONT-SIZE: 8pt;}
+.error{FONT-SIZE: 8pt; color:#BF1F1F;}
+
+.footer{ color:#808080; font-size: 8pt;}

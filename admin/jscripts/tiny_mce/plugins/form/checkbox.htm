@@ -1,0 +1,106 @@
+<html>
+ <head>
+  <title>{$lang_field_type_checkbox}</title>
+  <script language="javascript" type="text/javascript" src="../../tiny_mce_popup.js"></script>
+  <script language="javascript" type="text/javascript" src="form-extra.js"></script>
+  <script language="javascript" type="text/javascript">
+   function FormTextBox() {
+    if (window.opener) {
+     var args = new Array();
+     args["field_type"] = document.mainform.field_type.value;
+     args["field_name"] = document.mainform.field_name.value;
+     args["field_value"] = document.mainform.field_value.value;
+     args["field_checked"] = mceformsrv('field_checked');
+     args["field_disa"] = mceformsrv('field_disa');
+     args["action"] = tinyMCE.getWindowArg('action');
+     window.opener.tinyMCE.execCommand("mceFormCheckBox", false, args);
+     // Close the dialog
+     tinyMCE.closeDialog();
+    }
+   }
+   
+   function init() {
+    var formObj = document.mainform;
+    formObj.field_type.value = tinyMCE.getWindowArg('field_type');
+    formObj.field_name.value = tinyMCE.getWindowArg('field_name');
+    formObj.field_value.value = tinyMCE.getWindowArg('field_value');
+    mceformsrcfv('field_checked',tinyMCE.getWindowArg('field_checked'));
+    mceformsrcfv('field_disa',tinyMCE.getWindowArg('field_disa'));
+    formObj.insert.value = tinyMCE.getLang('lang_' + tinyMCE.getWindowArg('action'), 'Insert', true); 
+    var frmname = tinyMCE.getLang('lang_' + tinyMCE.getWindowArg('action'), 'Insert', true)
+     + " " + tinyMCE.getLang('lang_field_type_checkbox', 'Check Box', true);
+    document.title = frmname;
+    document.getElementById('dtitle').innerHTML = frmname;
+   }
+   
+   function cancelAction() {
+    tinyMCE.closeDialog();
+   }
+  </script>
+ </head>
+ <body onload="init();">
+  <div id=helpcat style="display: none">help_field_attr_</div>
+  <table border="0" cellpadding="0" cellspacing="0" width="400">
+    <tr>
+     <td class="title" align=center id='dtitle' onclick='mceHelpChange("lang_form_help_checkbox",1)'>{$lang_insert_field_title}{$lang_field_type_checkbox}</td>
+     <td class="help" nowrap>
+      Turn Help:<a href="#"><b id='helpstate' onclick='mceHelpOnOff();'>On</b></a>
+     </td>
+    </tr>
+    <tr>
+     <td><BR></td>
+     <td id='preview' rowspan=2 valign=top>
+      <table><TR><td>
+      <form id='preform' name='preform'>
+      <fieldset id=views>
+       <legend align=center>Preview</legend>
+       <input type=checkbox id=cool tabindex=100>
+      </fieldset>
+      </form>
+      </td></tr></table>
+      <div id="help"></div>
+     </td>
+    </tr>
+  <TR><td valign=top>
+  <form onsubmit="FormTextBox();return false;" name='mainform' id='mainform'>
+   <input type=hidden name="field_type" value="checkbox">
+   <table border="0" cellpadding="0" cellspacing="0" width="200">
+    <tr>
+     <td><BR></td>
+     <td> </td>
+    </tr>
+    <tr>
+     <td align=right nowrap onclick='mceHelpChange("name")'>{$lang_field_attr_name}: </td>
+     <td><input name="field_name" type="text" id="field_name" value="" size="16" maxlength="16" onFocus='mceHelpChange("name")' onchange='mceUpdateCheckboxPreview()'></td>
+    </tr>
+    <tr>
+     <td align=right nowrap onclick='mceHelpChange("select_submitted")'>{$lang_field_submitted}: </td>
+     <td><input name="field_value" type="text" id="field_value" value="" size="30" onFocus='mceHelpChange("select_submitted")' onchange='mceUpdateCheckboxPreview()'></td>
+    </tr>
+    <tr>
+     <td align=right nowrap onclick='mceHelpChange("checked")'>{$lang_field_attr_checked}: </td>
+     <td>
+      <input name="field_checked" type="radio" id="field_checked" value="true" onFocus='mceHelpChange("checked")' onchange='mceUpdateCheckboxPreview()'> Yes 
+      <input name="field_checked" type="radio" id="field_checked" value="false" onFocus='mceHelpChange("checked")' onchange='mceUpdateCheckboxPreview()'> No 
+     </td>
+    </tr>
+    <tr>
+     <td align=right nowrap onclick='mceHelpChange("disabled")'>{$lang_field_attr_disabled}: </td>
+     <td>
+      <input name="field_disa" type="radio" id="field_disa" value="true" onFocus='mceHelpChange("disabled")' onchange='mceUpdateCheckboxPreview()'> Yes
+      <input name="field_disa" type="radio" id="field_disa" value="false" onFocus='mceHelpChange("disabled")' onchange='mceUpdateCheckboxPreview()'> No
+     </td>
+    </tr>
+    <tr>
+     <td><BR></td>
+     <td> </td>
+    </tr>
+    <tr>
+        <td align="center"><input type="button" id="insert" name="insert" value="{$lang_insert}" onclick="FormTextBox();" onFocus='mceHelpChange("lang_form_help_form_update",1)' onmouseover='mceHelpChange("lang_form_help_form_update",1)'></td>
+        <td align="center"><input type="button" id="cancel" name="cancel" value="{$lang_cancel}" onclick="cancelAction();" onFocus='mceHelpChange("lang_form_help_form_cancel",1)' onmouseover='mceHelpChange("lang_form_help_form_cancel",1)'></td>
+    </tr>
+   </table>
+   </td></tr></table>
+  </form>
+ </body>
+</html>

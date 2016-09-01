@@ -1,0 +1,103 @@
+
+body, td, input, select, textarea, button
+{
+	font: 10px Verdana;
+	color: #000000;
+}
+
+li { font: 12px Verdana; color: #000000; }
+
+th
+{
+	color: #555555;
+	font: bold 12px Verdana;
+	text-align: center;
+	background-color: #EFEFEF;
+}
+
+h1
+{
+	font: bold 20px Arial;
+	color: #000000;
+}
+
+
+.page_block {
+  padding:0px;
+  border: 2px solid white;
+  text-align: left;
+  float: left;
+}
+
+.page_block_spacer { width: 6px; height:85px; float:left; }
+
+.page_block_down {
+  padding:0px;
+  text-align: center;
+  font: 10px Verdana;
+  color: #9E9E9E;
+  background-color: #616161;
+}
+
+.page_block_down a,
+.page_block_down a:visited { font: 10px Verdana; color: #9E9E9E; background-color: #616161; text-decoration: none;      }
+.page_block_down a:hover   { font: 10px Verdana; color: #9E9E9E; background-color: #616161; text-decoration: underline; }
+.page_block_down           { font: 10px Verdana; color: #9E9E9E; background-color: #616161; text-decoration: none;      }
+
+.news { padding:5px; }
+
+
+.categories           { padding:5px; font: 10px Verdana; color: #125C86; }
+.categories a,
+.categories a:visited { font: 10px Verdana; color: #125C86; text-decoration: none;      }
+.categories a:hover   { font: 10px Verdana; color: #125C86; text-decoration: underline; }
+
+.directory_title a,
+.directory_title a:visited { font: bold 12px Verdana; color: #125C86; text-decoration: none;      }
+.directory_title a:hover   { font: bold 12px Verdana; color: #125C86; text-decoration: underline; }
+
+.directory_title_payed a,
+.directory_title_payed a:visited { font: bold 11px Verdana; color: #125C86; text-decoration: none;      }
+.directory_title_payed a:hover   { font: bold 11px Verdana; color: #125C86; text-decoration: underline; }
+
+.directory_link a,
+.directory_link a:visited { font: 10px Verdana; color: #125C86; text-decoration: none;      }
+.directory_link a:hover   { font: 10px Verdana; color: #125C86; text-decoration: underline; }
+
+
+.results_header           { padding:5px; font: 11px Verdana; color: #000000; text-decoration:none;  padding-right:10px; padding-top: 2px; padding-bottom: 2px; }
+.results_header a,
+.results_header a:visited { font: bold 11px Verdana; color: #000000; text-decoration: underline; }
+.results_header a:hover   { font: bold 11px Verdana; color: #000000; text-decoration: underline; }
+
+.results_header2           { padding:5px; font: 11px Verdana; color: #000000; text-decoration:none;  padding-right:10px; padding-top: 2px; padding-bottom: 2px; }
+.results_header2 a,
+.results_header2 a:visited { font: bold 11px Verdana; color: #125C86; text-decoration: underline; }
+.results_header2 a:hover   { font: bold 11px Verdana; color: #125C86; text-decoration: underline; }
+
+.whats_this { valign: middle; }
+.whats_this a,
+.whats_this a:visited { font: 9px Verdana; color: #666666; text-decoration: none; }
+.whats_this a:hover   { font: 9px Verdana; color: #666666; text-decoration: none; }
+
+.theader{
+	background:#EFEFEF;
+	color: #555555;
+	font: bold 12px Verdana;
+	text-align: center;
+}
+
+#data_table td
+{
+ border-bottom: solid 1px #EFEFEF;
+ padding:5px;
+}
+
+.title{
+	font-weight:bold;
+}
+
+.error{
+	font-size:10px;
+	color:#ff0000;
+}

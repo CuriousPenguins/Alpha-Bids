@@ -1,0 +1,136 @@
+<html>
+ <head>
+  <title>{$lang_insert_form_title}</title>
+  <script language="javascript" type="text/javascript" src="../../tiny_mce_popup.js"></script>
+  <script language="javascript" type="text/javascript" src="form-extra.js"></script>
+  <script language="javascript" type="text/javascript">
+   function insertForm() {
+    if (window.opener) {
+     var args = new Array();
+     args["form_name"] = document.forms[0].form_name.value;
+     args["form_id"] = document.forms[0].form_id.value;
+     args["form_action"] = document.forms[0].form_action.value;
+     args["form_method"] = mceformsrv('form_method');
+     args["form_enctype"] = mceformsrv('form_enctype');
+     args["className"] = document.forms[0].styleSelect.options[document.forms[0].styleSelect.selectedIndex].value;
+     args["action"] = tinyMCE.getWindowArg('action');
+     window.opener.tinyMCE.execCommand("mceInsertForm", false, args);
+     // Close the dialog
+     tinyMCE.closeDialog();
+    }
+   }
+   
+   function init() {
+    mceformsrcfv('form_method',tinyMCE.getWindowArg('form_method'));
+    mceformsrcfv('form_enctype',tinyMCE.getWindowArg('form_enctype'));
+    mcestylesArSet();    
+    var formObj = document.forms[0];
+    formObj.form_name.value = tinyMCE.getWindowArg('form_name');
+    formObj.form_id.value = tinyMCE.getWindowArg('form_id');
+    formObj.form_action.value = tinyMCE.getWindowArg('form_action');
+    formObj.insert.value = tinyMCE.getLang('lang_' + tinyMCE.getWindowArg('action'), 'Insert', true); 
+    var frmname = tinyMCE.getLang('lang_' + tinyMCE.getWindowArg('action'), 'Insert', true)
+     + " " + tinyMCE.getLang('lang_insert_form_title', 'Form', true);
+    document.title = frmname;
+    document.getElementById('dtitle').innerHTML = frmname;
+   }
+   
+   function cancelAction() {
+    // Close the dialog
+    tinyMCE.closeDialog();
+   }
+  </script>
+ </head>
+ <body onload="init();">
+  <div id=defaulthelp style="display: none">{$lang_form_help_default}</div>
+  <div id=helpcat style="display: none">form_help_form_</div>
+  <table border="0" cellpadding="0" cellspacing="0" width="400">
+    <tr>
+     <td class="title" align=center id='dtitle' onclick='mceHelpChange("lang_form_help",1)'>{$lang_insert_form_title}</td>
+     <td class="help" nowrap>
+      Turn Help:<a href="#"><b id='helpstate' onclick='mceHelpOnOff();'>On</b></a>
+     </td>
+    </tr>
+    <tr>
+     <td><BR></td>
+     <td rowspan=2 valign=top>
+     <div id='preview'>Preview: {$lang_form_help_novisable}</div>
+     <P></P>
+     <div id="help"></div>
+     </td>
+    </tr>
+  <TR><td valign=top>
+  <form onsubmit="insertForm();return false;" name='mainform' id='mainform'>
+   <table border="0" cellpadding="0" cellspacing="0">
+    <tr>
+     <td width=70></td>
+     <td width=130></td>
+     <td></td>
+    </tr>
+    <tr>
+     <td align=right nowrap onclick='mceHelpChange("name")'>{$lang_insert_form_name}: </td>
+     <td><input name="form_name" type="text" id="form_name" value="" size="16" maxlength="16" onFocus='mceHelpChange("name")'></td>
+    </tr>
+    <tr>
+     <td align=right onclick='mceHelpChange("id")'>{$lang_insert_form_id}: </td>
+     <td><input name="form_id" type="text" id="form_id" value="" size="16" maxlength="16" onFocus='mceHelpChange("id")'></td>
+    </tr>
+    <tr>
+     <td align=right onclick='mceHelpChange("action")'>{$lang_insert_form_action}: </td>
+     <td><input name="form_action" type="text" id="form_action" value="" size="30" onFocus='mceHelpChange("action")'></td>
+    </tr>
+    <tr>
+     <td align=right onclick='mceHelpChange("method")'>{$lang_insert_form_method}: </td>
+     <td>
+      <!--
+      <select name="form_method">
+      <option value="POST"></option>
+      <option value="GET"></option>
+      </select>
+      -->
+      <input type=radio name="form_method" value="post"  onFocus='mceHelpChange("method")' /> {$lang_insert_form_POST} or
+      <input type=radio name="form_method" value="get"  onFocus='mceHelpChange("method")' /> {$lang_insert_form_GET}
+     </td>
+    </tr>
+    <tr>
+     <td nowrap align=center onclick='mceHelpChange("enctype")'>{$lang_insert_form_enctype}: </td>
+     <!--</td>
+     <!--<td nowrap>
+      <select name="">
+       <option value=""></option>
+       <option value=""></option>
+      </select>-->
+     <td nowrap>
+      <fieldset>
+       <input type=radio name="form_enctype" value="application/x-www-form-urlencoded"  onFocus='mceHelpChange("enctype")' /> {$lang_insert_form_urlencoded}<BR><center>-- or --</center>
+       <input type=radio name="form_enctype" value="multipart/form-data"  onFocus='mceHelpChange("enctype")' /> {$lang_insert_form_formdata}
+      </fieldset>
+     </td>
+    </tr>
+    <tr>
+     <td align=right onclick='mceHelpChange("class")'>{$lang_insert_form_class}: </td>
+     <td>
+      <select name="styleSelect" onFocus='mceHelpChange("class")'>
+       <option value="" selected>-- {$lang_theme_style_select} --</option>
+      </select>
+     </td>
+    </tr>
+    <tr>
+     <td><BR></td>
+     <td> </td>
+    </tr>
+    <tr>
+     <td colspan=2>
+      <table width=100%>
+       <tr>
+        <td align="center"><input type="button" id="insert" name="insert" value="{$lang_insert}" onclick="insertForm();" onFocus='mceHelpChange("update")' onmouseover='mceHelpChange("update")'></td>
+        <td align="center"><input type="button" id="cancel" name="cancel" value="{$lang_cancel}" onclick="cancelAction();" onFocus='mceHelpChange("cancel")' onmouseover='mceHelpChange("cancel")'></td>
+       </tr>
+      </table>
+     </td>
+    </tr>
+   </table>
+   </td></tr></table>
+  </form>
+ </body>
+</html>

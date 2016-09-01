@@ -1,0 +1,17 @@
+Options +FollowSymlinks
+RewriteEngine on
+RewriteRule ^([a-zA-Z])/$ index.php?tp=$1 [nc]
+RewriteRule ^(09)/$ index.php?tp=$1 [nc]
+RewriteRule ^([a-zA-Z])/page_([0-9]+)/$ index.php?tp=$1&curr_page=$2 [nc]
+RewriteRule ^search/page_([0-9]+)/((.*)+).html$ search.php?que=$2&curr_page=$1 [nc]
+RewriteRule ^search/((.*)+).html$ search.php?que=$1 [nc]
+RewriteRule ^details/([0-9]+)/$ details.php?link=$1 [nc]
+RewriteRule ^details/([0-9]+)/bid_([0-9]+)/$ details.php?link=$1&amt=$2 [nc]
+RewriteRule ^details/pay/$ details.php [nc]
+RewriteRule ^thanks/key([a-zA-Z0-9]+)/$ red_thanks.php?key=$1 [nc]
+RewriteRule ^thanks/$ thanks.php [nc]
+RewriteRule ^cancel/$ cancel.php [nc]
+RewriteRule ^about/$ about.php [nc]
+RewriteRule ^buy_link/$ buy_link.php [nc]
+RewriteRule ^contact/$ contact.php [nc]
+RewriteRule ^terms/$ terms.php [nc]

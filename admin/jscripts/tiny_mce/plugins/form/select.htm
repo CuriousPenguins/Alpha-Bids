@@ -1,0 +1,137 @@
+<html>
+ <head>
+  <title>{$lang_field_type_select}</title>
+  <script language="javascript" type="text/javascript" src="../../tiny_mce_popup.js"></script>
+  <script language="javascript" type="text/javascript" src="form-extra.js"></script>
+  <script language="javascript" type="text/javascript">
+   
+   function FormTextBox() {
+    if (window.opener) {
+     // Build the pass-back array from the form
+     var args = new Array();
+     // easy ones first
+     args["field_name"] = document.mainform.field_name.value;
+     args["field_size"] = document.mainform.field_size.value;
+     args["field_multiple"] = mceformsrv('field_multiple');
+     args["field_disa"] = mceformsrv('field_disa');
+     args["action"] = tinyMCE.getWindowArg('action');
+     args["field_optarr"] = mceformbuildoptarr();
+     window.opener.tinyMCE.execCommand("mceFormSelect", false, args);
+     // Close the dialog
+     tinyMCE.closeDialog();
+    }
+   }
+   
+   function init() {
+    var formObj = document.mainform;
+    formObj.field_name.value = tinyMCE.getWindowArg('field_name');
+    formObj.field_size.value = tinyMCE.getWindowArg('field_size');
+    mceformsrcfv('field_multiple',tinyMCE.getWindowArg('field_multiple'));
+    mceformsrcfv('field_disa',tinyMCE.getWindowArg('field_disa'));
+    mceformoptsfromoptarr(tinyMCE.getWindowArg('field_optarr'));
+    formObj.insert.value = tinyMCE.getLang('lang_' + tinyMCE.getWindowArg('action'), 'Insert', true);
+    mceformSayNewOpts();
+    var frmname = tinyMCE.getLang('lang_' + tinyMCE.getWindowArg('action'), 'Insert', true)
+     + " " + tinyMCE.getLang('lang_field_type_select', 'Select', true);
+    document.title = frmname;
+    document.getElementById('dtitle').innerHTML = frmname;
+   }
+
+   function cancelAction() {
+    // Close the dialog
+    tinyMCE.closeDialog();
+   }
+  </script>
+ </head>
+ <body onload="init();">
+  <div id=helpcat style="display: none">help_field_attr_</div>
+  <table border="0" cellpadding="0" cellspacing="0" width="400">
+    <tr>
+     <td class="title" align=center id='dtitle' onclick='mceHelpChange("lang_form_help_select",1)'>{$lang_insert_field_title}{$lang_field_type_select}</td>
+     <td class="help" nowrap>
+      Turn Help:<a href="#"><b id='helpstate' onclick='mceHelpOnOff();'>On</b></a>
+     </td>
+    </tr>
+    <tr>
+     <td><BR></td>
+     <td id='preview' rowspan=2 valign=top>
+      <table><TR><td>
+      <form id='preform' name='preform'>
+      <fieldset id=views>
+       <legend align=center>Preview</legend>
+       <select id=cool tabindex=100>
+        <option>option 1</option>
+        <option>option 2</option>
+       </select>
+      </fieldset>
+      </form>
+      </td></tr></table>
+      <div id="help"></div>
+     </td>
+    </tr>
+  <TR><td valign=top>
+  <form onsubmit="FormTextBox();return false;" name=mainform>
+   <input type=hidden name="counter" id="counter" value=0>
+   <input type=hidden name="field_type" value="text">
+    <center>
+   <table border="0" cellpadding="0" cellspacing="0" width="400">
+    <tr>
+     <td width=50%><BR></td>
+     <td width=50%> </td>
+    </tr>
+    <tr>
+     <td align=right nowrap onclick='mceHelpChange("name")'>{$lang_field_attr_name}: </td>
+     <td><input name="field_name" type="text" id="field_name" value="" size="16" maxlength="16" onFocus='mceHelpChange("name")' onchange='mceUpdateSelectPreview()'></td>
+    </tr>
+    <tr>
+     <td align=right nowrap onclick='mceHelpChange("select_size")'>{$lang_field_attr_size}: </td>
+     <td><input name="field_size" type="text" id="field_size" value="" size="1" maxlength=1 onFocus='mceHelpChange("select_size")' onchange='mceUpdateSelectPreview()'></td>
+    </tr>
+    <tr>
+     <td align=right nowrap onclick='mceHelpChange("multiple")'>{$lang_field_attr_multiple}: </td>
+     <td>
+      <input name="field_multiple" type="radio" id="field_multiple" value="true" onFocus='mceHelpChange("multiple")' onchange='mceUpdateSelectPreview()'> Yes 
+      <input name="field_multiple" type="radio" id="field_multiple" value="false" onFocus='mceHelpChange("multiple")' onchange='mceUpdateSelectPreview()'> No 
+     </td>
+    </tr>
+    <tr>
+     <td align=right nowrap onclick='mceHelpChange("disabled")'>{$lang_field_attr_disabled}: </td>
+     <td>
+      <input name="field_disa" type="radio" id="field_disa" value="true" onFocus='mceHelpChange("disabled")' onchange='mceUpdateSelectPreview()'> Yes
+      <input name="field_disa" type="radio" id="field_disa" value="false" onFocus='mceHelpChange("disabled")' onchange='mceUpdateSelectPreview()'> No
+     </td>
+    </tr>
+    <tr>
+     <td width=140><BR></td>
+     <td width=140> </td>
+    </tr>
+    <tr>
+     <td colspan=2 id='dynatext'>
+      <table>
+       <tr><td colspan=3 align="center" class="title" onclick='mceHelpChange("lang_form_help_options",1)'>{$lang_field_options}</td></tr>
+       <TR>
+        <TD class="title" nowrap width=70 align=center onclick='mceHelpChange("selected")'>{$lang_field_selected}</TD>
+        <TD class="title" nowrap width=165 onclick='mceHelpChange("select_display")'>{$lang_field_displayed}</TD>
+        <TD class="title" nowrap width=165 onclick='mceHelpChange("select_submitted")'>{$lang_field_submitted}</TD>
+       </TR>
+      </Table>
+     </td>
+    </tr>
+    <tr>
+     <td align=center colspan=2>
+      <table>
+       <tr>
+        <td align="left" onmouseover='mceHelpChange("select_more")'><input type="button" id="more" name="more" value='{$lang_form_more_options}' onclick="mceformSayNewOpts();"></td>
+        <td align="center" onmouseover='mceHelpChange("lang_form_help_form_update",1)'><input type="button" id="insert" name="insert" value="{$lang_insert}" onclick="FormTextBox();"></td>
+        <td align="right" onmouseover='mceHelpChange("lang_form_help_form_cancel",1)'><input type="button" id="cancel" name="cancel" value="{$lang_cancel}" onclick="cancelAction();"></td>
+       </tr>
+      </table>
+     </td>
+    </tr>
+   </table>
+        </td>
+       </tr>
+      </table>
+  </form>
+ </body>
+</html>
